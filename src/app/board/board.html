@@ -1,0 +1,48 @@
+<div class="scoreboard">
+  @for (player of players; track i; let i = $index) {
+    <div class="player-box" [class.selected-player]="actualPlayer?.id === player.id">
+      <div class="profile-box">
+      </div>
+    <p class="player-name" >{{ player.name }}</p>
+      <p class="player-score">{{player.score}}</p>
+    </div>
+  }
+</div>
+
+<table>
+  <tbody>
+    @for (row of board; track i; let i = $index) {
+      <tr>
+        @for (cell of row; track j; let j = $index) {
+          <td
+            [class.hovered]="hoverColumn === j"
+            [class.player1-preview]="getPreviewRow(j) === i && actualPlayer?.id === 'player1'"
+            [class.player2-preview]="getPreviewRow(j) === i && actualPlayer?.id === 'player2'"
+            (mouseenter)="hoverColumn = j"
+            (mouseleave)="hoverColumn = null"
+            (click)="makeMove(j)">
+            <div class="circle-box" [ngClass]="cell?.id"></div>
+          </td>
+        }
+      </tr>
+    }
+  </tbody>
+</table>
+@if (!fillPlayers) {
+  <div class="fixed-screen">
+    <div class="popup">
+      <p>Introduzca el nombre del {{actualPlayer?.name}}</p>
+      <input type="text" [(ngModel)]="tempName" />
+      <button (click)="fillPlayer()">Enviar</button>
+    </div>
+  </div>
+}
+@if (gameOver) {
+  <div class="fixed-screen">
+    <div class="popup">
+      <p>¡Ganador: {{ winner?.name}}!</p>
+      <button (click)="resetBoard()">Reiniciar tablero</button>
+      <button (click)="resetScores()">Reiniciar contador</button>
+    </div>
+  </div>
+}

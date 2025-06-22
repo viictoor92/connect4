@@ -1,0 +1,17 @@
+:root {
+  --primary-color: blue;
+  --secondary-color: aliceblue;
+  --color-player1: red;
+  --color-player2: yellow;
+  --color-empty: white;
+  --color-scoreboard-bg: black;
+  --color-popup-bg: white;
+  --color-popup-overlay: rgba(0,0,0,0.8);
+
+  --radius-small: 0.5rem;
+  --radius-medium: 1.75rem;
+  --radius-large: 2.5rem;
+  --circle-size: 2rem;
+  --circle-padding: 1rem;
+
+}

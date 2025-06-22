@@ -1,0 +1,8 @@
+@import "app/_variables.css";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
+  overflow: hidden;
+}
